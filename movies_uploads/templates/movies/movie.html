@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>{{ movie.name }}</title>
+{% endblock %}
+
+{% block content %}
+    <section class="m-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-5 col-xl-6 col-lg-5 col-md-6">
+                    <img src="{{ movie.image.url }}" class="card-img-top" alt="{{ movie.name }} Movie">
+                </div>
+
+                <div class="col-xxl-7 col-xl-6 col-lg-7 col-md-6 justify-content-center">
+                    <div>
+                        <h2>{{ movie.name }}</h2>
+                        <h4>{{ movie.director }}</h4>
+                    </div>
+
+                    <!--
+                        <div class="container">
+                        <div class="row">
+                                <div class=" col-xl-6 col-lg-6 col-md-6 p-0">
+                                    <h3>Localização</h3>
+                                    <p></p>
+                                </div>
+
+                                <div class=" col-xl-6 col-lg-6 col-md-6 p-0">
+                                    <h3>Date</h3>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    -->
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

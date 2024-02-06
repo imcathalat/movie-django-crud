@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+    {% if movies %}
+
+        <div class="container">
+            <div class="row"> 
+
+            {% for movie in movies %}
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-12 d-flex justify-content-center p-2">
+                    <div class="card" style="width:380px;">
+                        <img src="{{movie.image.url}}" height="300px" class="card-img-top object-fit-cover" alt="{{movie.name}} Movie">
+                        <div class="card-body">
+                        <h5 class="card-title">{{movie.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">{{movie.director}}</h6>
+                        <a href="{% url 'movie_detail' movie_id=movie.id %}" class="btn btn-primary rounded-pill">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
