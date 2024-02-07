@@ -1,12 +1,23 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, widgets
 from django import forms
 from .models import Movie
 
-class UploadForm(ModelForm):
-    name = forms.TextInput()
-    director = forms.TextInput()
-    image = forms.ImageField()
-
+class UploadForm(forms.ModelForm):
     class Meta:
         model = Movie
-        fields = ['name', 'director', 'image']
+        fields = "__all__"
+        widgets= {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'director': forms.TextInput(attrs={'class': 'form-control'}),
+            'image': forms.FileInput(attrs={'class': 'form-control'})
+        }
+
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = Movie
+        fields = "__all__"
+        widgets= {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'value': 'movie.name'}),
+            'director': forms.TextInput(attrs={'class': 'form-control', 'value': 'movie.director'}),
+            'image': forms.FileInput(attrs={'class': 'form-control'})
+        }

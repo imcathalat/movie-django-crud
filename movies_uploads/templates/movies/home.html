@@ -14,9 +14,14 @@
                     <div class="card" style="width:380px;">
                         <img src="{{movie.image.url}}" height="300px" class="card-img-top object-fit-cover" alt="{{movie.name}} Movie">
                         <div class="card-body">
-                        <h5 class="card-title">{{movie.name}}</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">{{movie.director}}</h6>
-                        <a href="{% url 'movie_detail' movie_id=movie.id %}" class="btn btn-primary rounded-pill">Details</a>
+                            <h5 class="card-title">{{movie.name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">{{movie.director}}</h6>
+                            <a href="{% url 'movie_detail' movie_id=movie.id %}" class="btn btn-primary rounded-pill">Details</a>
+                            <div class="position-relative m-0 p-0">
+                                <a href="{% url 'edit' movie_id=movie.id %}" class="btn bg-prymary-subtle position-absolute bottom-0 end-0 m-0 p-0">
+                                    <i class="fa-solid fa-pen-to-square fa-rotate-270 fa-2xl" style="color: #74C0FC;"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

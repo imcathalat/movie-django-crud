@@ -6,11 +6,21 @@
 
 {% block content %}
 
-    <form method="POST" action="{% url 'upload' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <button>Submit</button>
-    </form>
+    
+
+    
+    <div class="container h-100 position-relative m-5">
+        <div class="w-50 mt-3 h-100 position-absolute start-50 translate-middle">
+            <h1 class="text-center">Register a Movie</h1>
+            <form method="POST" action="{% url 'upload' %}" enctype="multipart/form-data" class="p-5 border rounded bg-primary-subtle">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary rounded-pill">Submit</button>
+            </form>
+        </div> 
+    </div>
+   
+
 
 {% endblock %}
 
