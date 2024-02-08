@@ -12,10 +12,7 @@ class UploadForm(forms.ModelForm):
             'image': forms.FileInput(attrs={'class': 'form-control'})
         }
 
-class EditForm(forms.ModelForm):
-    model = Movie
-
-    renewal_name = forms.TextInput(attrs={'class': 'form-control'})
-    renewal_director = forms.TextInput(attrs={'class': 'form-control'})
-    renewal_image_cover = forms.FileInput(attrs={'class': 'form-control'})
+    def __init__(self, *args, **kwargs):
+        super(UploadForm, self).__init__(*args, **kwargs)
+        self.fields['image'].required = False
 
