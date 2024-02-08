@@ -12,12 +12,3 @@ class UploadForm(forms.ModelForm):
             'image': forms.FileInput(attrs={'class': 'form-control'})
         }
 
-class EditForm(forms.ModelForm):
-    class Meta:
-        model = Movie
-        fields = "__all__"
-        widgets= {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'value': 'movie.name'}),
-            'director': forms.TextInput(attrs={'class': 'form-control', 'value': 'movie.director'}),
-            'image': forms.FileInput(attrs={'class': 'form-control'})
-        }
