@@ -11,7 +11,10 @@
             <h1 class="text-center">Edit {{movie.name}}</h1>
             <form method="POST" enctype="multipart/form-data" class="p-5 border rounded bg-primary-subtle">
                 {% csrf_token %}
-                <input type="hidden" name="csrfmiddlewaretoken" value="Nem9Rrhjr89WlLyjW3zddYnjcWlWu3KCw9Ht3x3P9xdR6hkLsFgPxq4u6lBhxeC8">
+
+                {{ form }}
+
+                {% comment %} <input type="hidden" name="csrfmiddlewaretoken" value="Nem9Rrhjr89WlLyjW3zddYnjcWlWu3KCw9Ht3x3P9xdR6hkLsFgPxq4u6lBhxeC8">
                 <p>
                     <label for="id_name">Name:</label>
                     <input type="text" name="name" class="form-control" maxlength="150" id="id_name" value="{{ movie.name }}">
@@ -26,7 +29,7 @@
                     {% endif %}
                 </p>
                 <label for="id_image">Image:</label> 
-                <input type="file" name="image-cover" class="form-control" accept="image/*" id="id_image">
+                <input type="file" name="image-cover" class="form-control" accept="image/*" id="id_image"> {% endcomment %}
 
                 <button class="btn btn-primary rounded-pill">Update</button>
             </form>

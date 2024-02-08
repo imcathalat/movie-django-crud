@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404, HttpResponse
 from movies_uploads.models import Movie
-from movies_uploads.forms import UploadForm #instanciando um formulario de forms.py
+from movies_uploads.forms import UploadForm, EditForm #instanciando um formulario de forms.py
 import os
 from django.contrib import messages
 
@@ -35,27 +35,35 @@ def upload(request):
         return render(request, 'movies/upload.html', {'form': form})
     
 def edit(request, movie_id):
-    movie = Movie.objects.get(id=movie_id)
+    movie = get_object_or_404(Movie, id=movie_id)
 
     if (request.method == 'POST'):
-        if len(request.FILES) != 0:
-            if len(movie.image) > 0:
-                os.remove(movie.image.path)
-                movie.image = request.FILES['image-cover']
+        form = EditForm(request.POST)
+        
+        if form.is_valid():
+            if len(request.FILES) != 0:
+                if len(movie.image) > 0:
+                    os.remove(movie.image.path)
+                    movie.image = request.FILES['renewal_image-cover']
             
-        movie.name = request.POST.get('name')
-        movie.director = request.POST.get('director')
+        movie.name = request.POST.get('renewal_name')
+        movie.director = request.POST.get('renewal_director')
         movie.save()
 
         messages.success(request, 'Movie Updated SUccessfully')
+        
+
         return redirect('home')
     
     else:
 
+        form = EditForm(initial={'renewal_name': movie.name, 'renewal_director': movie.director, 'renewal_image-cover': movie.image})
+
         context = {
+            'form': form,
             'movie': movie
         }
-
+             
         return render(request, 'movies/edit.html', context)
     
 
