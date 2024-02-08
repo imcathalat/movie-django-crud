@@ -56,6 +56,12 @@ def edit(request, movie_id):
              
         return render(request, 'movies/edit.html', context)
     
+def delete(request, movie_id):
+    movie = Movie.objects.get(id=movie_id)
+    movie.delete()
+
+    return redirect('home')
+    
 
 
 # Se eu fosse fazer com DetailView (maneira mais facil) ficaria da seguinte forma:

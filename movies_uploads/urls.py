@@ -25,5 +25,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('movies/<int:movie_id>', views.movie, name='movie_detail'),
     path('movies/upload', views.upload, name='upload'),
-    path('movies/edit/<int:movie_id>', views.edit, name='edit')
+    path('movies/edit/<int:movie_id>', views.edit, name='edit'),
+    path('movies/delete/<int:movie_id>', views.delete, name='delete')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
