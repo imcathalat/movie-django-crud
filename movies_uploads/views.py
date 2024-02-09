@@ -59,7 +59,6 @@ def edit(request, movie_id):
 def delete(request, movie_id):
     movie = Movie.objects.get(id=movie_id)
     movie.delete()
-
     return redirect('home')
     
 
