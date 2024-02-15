@@ -18,13 +18,17 @@
 
 <div class="container h-100 position-relative m-5">
     <div class="w-50 mt-3 h-100 position-absolute start-50 translate-middle">
-        <h1 class="text-center">Login</h1>
-        <form method="POST" action="{% url 'user_login' %}" enctype="multipart/form-data" class="p-5 border rounded bg-primary-subtle">
+        <h1 class="text-center">Sign in</h1>
+        <form method="POST" action="{% url 'user_sign' %}" enctype="multipart/form-data" class="p-5 border rounded bg-primary-subtle">
             {% csrf_token %}
 
             <div class="mb-3">
-                <label for="username" class="form-label" >Username</label>
+                <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" name="username" id="username">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" name="email" id="email">
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
