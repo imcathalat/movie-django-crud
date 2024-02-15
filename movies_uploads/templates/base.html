@@ -29,13 +29,18 @@
                 </button>
                 <div class="collapse navbar-collapse align-items-center" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
-                    <li class="nav-item ms-5 align-items-center">
-                        <a class="nav-link text-black text-end fw-semibold mt-1" aria-current="page" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-black text-end" aria-current="page" href="{% url 'upload' %}">
-                            <button type="button" class="btn btn-outline-dark mt-0">New movie</button>
-                        </a>
+                        <li class="nav-item ms-5 align-items-center">
+                            <a class="nav-link text-black text-end fw-semibold mt-1" aria-current="page" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black text-end" aria-current="page" href="{% url 'upload' %}">
+                                <button type="button" class="btn btn-outline-dark mt-0">New movie</button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black text-end" aria-current="page" href="{% url 'user_login' %}">
+                                <button type="button" class="btn btn-outline-dark mt-0">Login</button>
+                            </a>
                         </li>
                     </ul>  
                 </div>
