@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404, HttpResponse
-from movies_uploads.models import Movie
+from movies_uploads.models import Movie, delete_file_from_media
 from movies_uploads.forms import UploadForm #instanciando um formulario de forms.py
 import os
 from django.contrib import messages
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 
 def home(request):
@@ -58,6 +60,7 @@ def edit(request, movie_id):
     
 def delete(request, movie_id):
     movie = Movie.objects.get(id=movie_id)
+    delete_file_from_media(Movie, movie)
     movie.delete()
     return redirect('home')
     
