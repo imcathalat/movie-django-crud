@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.models import User
-from movies_uploads.views import home
 from movies_uploads import urls
 
 def user_sign(request):
@@ -26,19 +25,20 @@ def user_sign(request):
 
 
 def user_login(request):
-    if request.method == "GET":
-        return render(request, 'registration/login.html')
-    else:
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
         user = authenticate(username=username, password=password)
 
         if user is not None:
             login(request, user)
             return redirect('home')
         else:
-            return HttpResponse("Não ha usuario com essas credenciais")
+            messages.success(request, ('There Was An Error Logging In, Try Again.'))
+            return render(request, 'registration/login.html')
 
+    else:
+        return render(request, 'registration/login.html')
     # if user is not None:
     #     login(request, user)
     #     print('user')
