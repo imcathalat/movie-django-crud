@@ -6,6 +6,7 @@ import os
 from django.contrib import messages
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
