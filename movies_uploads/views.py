@@ -59,7 +59,8 @@ def edit(request, movie_id):
              
         return render(request, 'movies/edit.html', context)
     
-def delete(movie_id):
+def delete(request, movie_id):
+    print(movie_id)
     movie = Movie.objects.get(id=movie_id)
     delete_file_from_media(Movie, movie)
     movie.delete()

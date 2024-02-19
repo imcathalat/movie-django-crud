@@ -24,9 +24,9 @@
                                     <i class="fa-regular fa-pen-to-square fa-xl" style="color: #74C0FC;"></i>
                                 </a>
 
-                                <a href="{% url 'delete' movie_id=movie.id %}" class="btn bg-prymary-subtle position-absolute me-3 my-3 bottom-0 end-0 m-0 p-0" data-bs-toggle="modal" data-bs-target="#modal-delete-{{ movie.id }}" id="deleteButton">
+                                <button class="btn bg-prymary-subtle position-absolute me-3 my-3 bottom-0 end-0 m-0 p-0" data-bs-toggle="modal" data-bs-target="#modal-delete-{{ movie.id }}" id="deleteButton">
                                     <i class="fa-regular fa-trash-can fa-xl" style="color: #1a5fb4;"></i>
-                                </a>
+                                </button>
 
                             {% endif %}
 
