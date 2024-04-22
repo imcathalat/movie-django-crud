@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404, HttpResponse
-from movies_uploads.models import Movie, delete_file_from_media
-from movies_uploads.forms import UploadForm #instanciando um formulario de forms.py
+from movies_uploads.models import Movie, Review, delete_file_from_media
+from movies_uploads.forms import UploadForm, ReviewForm #instanciando um formulario de forms.py
 import os
 from django.contrib import messages
 from django.db.models.signals import pre_delete
@@ -11,7 +11,11 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     movies = Movie.objects.all()
-    context = {'movies': movies}
+    reviews = Review.objects.all()
+    context = {
+        'movies': movies,
+        'reviews': reviews
+    }
     return render(request, 'movies/home.html', context)
         
 
@@ -65,6 +69,18 @@ def delete(request, movie_id):
     delete_file_from_media(Movie, movie)
     movie.delete()
     return redirect('home')
+
+def review(request):
+
+    if (request.POST):
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('home')
+
+    else:
+        form = ReviewForm()
+        return render(request, 'movies/review.html', {'form': form})
     
 
 

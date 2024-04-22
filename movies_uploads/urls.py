@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('movies/<int:movie_id>', views.movie, name='movie_detail'),
     path('movies/upload', views.upload, name='upload'),
+    path('movies/review', views.review, name='review'),
     path('movies/edit/<int:movie_id>', views.edit, name='edit'),
     path('movies/delete/<int:movie_id>', views.delete, name='delete'),
     path('user/', include('users.urls')),

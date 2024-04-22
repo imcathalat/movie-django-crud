@@ -8,6 +8,7 @@
 
         <div class="container">
             <div class="row"> 
+                <div id="ckeditor"></div>
 
             {% for movie in movies %}
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-12 d-flex justify-content-center p-2">
@@ -17,6 +18,8 @@
                             <h5 class="card-title">{{movie.name}}</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary">{{movie.director}}</h6>
                             <a href="{% url 'movie_detail' movie_id=movie.id %}" class="btn btn-primary rounded-pill">Details</a>
+                            <a href="{% url 'review' %}" class="btn btn-primary rounded-pill">Write a review</a>
+                            
 
                             {% if user.is_authenticated %}
 
@@ -52,6 +55,31 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+            {% endfor %}
+
+            {% for review in reviews%}
+                <div>
+                    <a href="{% url 'review' %}">
+                        <div class="col-md-3">
+                        <div class="card m-0 p-3">
+                            <div class="card-header border border-0 m-0 p-0">
+                            <div class="border border-black rounded-3 p-4">
+                                <p class="m-0 tutorial-card-title align-self-baseline text-center">{{ review.title }}</p>
+                            </div>
+                            </div>
+                            <div class="card-body">
+                            {{ review.description }}
+                            </div>
+                            <div class="card-footer text-center border-top bg-white p-0 pt-3">
+                            <p> 
+                                <small><strong>{{ review.movie }}</strong></small>
+                            </p>
+                            </div>
+                        </div>
+                        </div>
+                    </a>
                 </div>
             {% endfor %}
             
